@@ -12,7 +12,6 @@ func _init(frequency, effect):
 	self.frequency = frequency
 	self.current_count = frequency
 	self.effect = effect
-	GlobalCounter.count_sec.connect(self.update_count)
 	
 func reset_count():
 	self.current_count = frequency
