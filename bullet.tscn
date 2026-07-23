@@ -10,3 +10,6 @@ script = ExtResource("1_v8qja")
 position = Vector2(2.9999962, -1)
 scale = Vector2(0.6328125, 0.18750001)
 texture = ExtResource("1_v7oki")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="hit" from="." to="." method="_on_hit"]

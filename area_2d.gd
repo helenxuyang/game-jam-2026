@@ -3,6 +3,7 @@ var screen_size # Size of the game window.
 var speed = 400
 const Bullet = preload("res://bullet.tscn")
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size # Replace with function body.

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b4jlhteub8muh"]
+
+[ext_resource type="Script" uid="uid://dgr2lr5jgkjir" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://d257ffddlidy4" path="res://icon.svg" id="1_7k104"]
+
+[node name="Area2D" type="Area2D" unique_id=1640303650]
+script = ExtResource("1_4gyqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=903899431]
+skew = 0.8255407
+texture = ExtResource("1_7k104")

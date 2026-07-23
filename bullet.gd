@@ -1,5 +1,6 @@
 extends Area2D
 var speed = 20;
+signal hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,3 +12,8 @@ func _process(delta: float) -> void:
 	var velocity = transform.x.normalized() * speed # The player's movement vector.
 	position += velocity #this is to make the bullet fly to the right when fired
 	pass
+
+
+func _on_body_entered(body: Node2D) -> void:
+	hit.emit()
+	set_deferred("disabled", true)
