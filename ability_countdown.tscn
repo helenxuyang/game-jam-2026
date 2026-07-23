@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dlu2g06odkkbn"]
+
+[ext_resource type="Script" uid="uid://bjx8kerucqluf" path="res://ability_countdown.gd" id="1_semn8"]
+[ext_resource type="Texture2D" uid="uid://clgdux68qonvi" path="res://ui/assets/progress_ring.svg" id="2_rk2j3"]
+
+[node name="AbilityCountdown" type="Control" unique_id=356765739]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_semn8")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1727102831]
+layout_mode = 0
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 55.0
+offset_bottom = 55.0
+value = 33.0
+fill_mode = 4
+texture_under = ExtResource("2_rk2j3")
+texture_progress = ExtResource("2_rk2j3")
+tint_progress = Color(0, 0.5284455, 0.25810957, 1)
