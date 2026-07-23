@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://iaadxyt5y0r2" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://p5lt5s34hlnf" path="res://area_2d.tscn" id="2_0xm2m"]
 [ext_resource type="AudioStream" uid="uid://bcqya3k2jubd4" path="res://sound/freesound_community-metronome-85688.mp3" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://kfgcif15hu1i" path="res://global_counter.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://in1fy4tx5lld" path="res://hud.gd" id="5_lquwl"]
 
 [node name="Main" type="Node" unique_id=2053652697]
 script = ExtResource("1_ig7tw")
@@ -14,5 +16,10 @@ autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=259382215]
 stream = ExtResource("3_h2yge")
+
+[node name="GlobalCounter" parent="." unique_id=87434365 instance=ExtResource("4_1bvp3")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1716696347]
+script = ExtResource("5_lquwl")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
