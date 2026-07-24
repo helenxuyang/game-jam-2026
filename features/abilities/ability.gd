@@ -5,7 +5,6 @@ var current_count: int
 var effect_name: String
 var effect: Callable
 
-
 func _init(frequency, effect_name, effect):
 	self.frequency = frequency
 	self.current_count = 1
@@ -15,7 +14,7 @@ func _init(frequency, effect_name, effect):
 func reset_count():
 	self.current_count = 1
 	
-func update_count():
+func increment_count():
 	if self.current_count == frequency:
 		self.reset_count()
 	else:
@@ -24,6 +23,7 @@ func update_count():
 func is_ready():
 	return self.current_count == frequency
 
-func activate():
+func fire():
 	if self.is_ready():
 		self.effect.call()
+	self.reset_count()

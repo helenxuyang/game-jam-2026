@@ -7,14 +7,23 @@ static func create(ability: Ability):
 	var scene = load("res://features/abilities/ability_countdown.tscn")
 	var instance: AbilityCountdown = scene.instantiate()
 	instance.ability = ability
-	GlobalCounter.count_sec.connect(instance.update_count)
 	instance.get_node("Label").text = str(ability.frequency)
-	instance.update_count()
+	instance.update_count_display()
+	
+	GlobalCounter.count_sec.connect(instance.on_count_sec)
+	player.fire.connect(instance.on_fire)
 	
 	return instance
 
-func update_count():
-	self.ability.update_count()
+func on_count_sec():
+	self.ability.increment_count()
+	self.update_count_display()
+
+func on_fire():
+	self.ability.fire()
+	self.update_count_display()
+	
+func update_count_display():
 	var percent = float(self.ability.current_count) / float(self.ability.frequency) * 100
 	set_value(percent)
 	

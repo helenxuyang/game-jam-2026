@@ -9,7 +9,7 @@ func _ready() -> void:
 	add_child(Enemy)
 	Enemy.position = Vector2(10000, -1000)
 	GlobalCounter.global_timer.start()
-	
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

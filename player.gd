@@ -3,6 +3,7 @@ var screen_size # Size of the game window.
 var speed = 400
 const Bullet = preload("res://bullet.tscn")
 
+signal fire
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,8 +28,8 @@ func _process(delta: float) -> void:
 		bullet.global_position = global_position
 		bullet.global_rotation = global_rotation
 		#get_parent().get_node("AudioStreamPlayer").play()
-
-
+		fire.emit()
+		
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
