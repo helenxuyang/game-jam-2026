@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://p5lt5s34hlnf"]
 
-[ext_resource type="Script" uid="uid://cigtax5pqflj7" path="res://area_2d.gd" id="1_gf172"]
+[ext_resource type="Script" uid="uid://cigtax5pqflj7" path="res://player.gd" id="1_gf172"]
 [ext_resource type="Texture2D" uid="uid://d257ffddlidy4" path="res://icon.svg" id="2_dl81w"]
 
 [node name="Area2D" type="Area2D" unique_id=366303387]
