@@ -7,23 +7,15 @@ func _ready() -> void:
 	var Enemy =  enemy.instantiate()
 	add_child(Enemy)
 	Enemy.position = Vector2(10000, -1000)
-	GlobalCounter.global_timer.start()
-	GlobalCounter.count_sec.connect(self.play_tick_audio)
+	GlobalTimer.timer.start()
+	GlobalTimer.count_sec.connect(self.play_tick_audio)
 
+func play_tick_audio():
+	var sec: int = GlobalTimer.global_ms / 1000
+	$MetronomeAudioPlayer.play();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
-func play_tick_audio():
-	var sec: int = GlobalCounter.global_ms / 1000
-	$AudioStreamPlayer.play();
 	
-	if (sec % Hud.ability_countdowns[0].ability.period == 0):
-		$AudioStreamPlayer1.play();
-	if (sec % Hud.ability_countdowns[1].ability.period == 0):
-		$AudioStreamPlayer2.play();
-	if (sec % Hud.ability_countdowns[2].ability.period == 0):
-		$AudioStreamPlayer3.play();
-	if (sec % Hud.ability_countdowns[3].ability.period == 0):
-		$AudioStreamPlayer4.play();

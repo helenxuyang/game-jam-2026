@@ -4,7 +4,7 @@ const period = 0.02
 const valid_window = 150
 
 var global_ms: int
-var global_timer: Timer
+var timer: Timer
 
 var is_paused: bool = false
 var pause_time
@@ -12,10 +12,10 @@ var pause_time
 signal count_sec
 
 func _ready():
-	self.global_timer = Timer.new()
-	self.global_timer.wait_time = period
-	self.global_timer.timeout.connect(_on_timeout)
-	add_child(self.global_timer)
+	self.timer = Timer.new()
+	self.timer.wait_time = period
+	self.timer.timeout.connect(_on_timeout)
+	add_child(self.timer)
 
 func _on_timeout():
 	self.global_ms += (period * 1000)

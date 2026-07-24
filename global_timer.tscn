@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kfgcif15hu1i"]
+
+[ext_resource type="Script" uid="uid://k3tmrw311wl0" path="res://global_timer.gd" id="1_c1aoi"]
+
+[node name="GlobalCounter" type="Node2D" unique_id=87434365]
+script = ExtResource("1_c1aoi")

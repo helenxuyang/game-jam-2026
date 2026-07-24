@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 		velocity.y -= 1
 		#rotation_degrees -= 1
 	if Input.is_action_just_pressed("fire"):
-		Hud.handle_fire()
+		AbilitiesManager.handle_fire()
 		
 	velocity = velocity.normalized() * speed
 	position += velocity * delta

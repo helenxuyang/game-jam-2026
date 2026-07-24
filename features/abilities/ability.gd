@@ -13,9 +13,9 @@ func _init(period, effect_name, effect):
 		
 func is_ready():
 	var period_ms = period * 1000
-	var closest_multiple = snappedi(GlobalCounter.global_ms, period_ms)
-	var diff = abs(closest_multiple - GlobalCounter.global_ms)
-	return diff < GlobalCounter.valid_window
+	var closest_multiple = snappedi(GlobalTimer.global_ms, period_ms)
+	var diff = abs(closest_multiple - GlobalTimer.global_ms)
+	return diff < GlobalTimer.valid_window
 
 func fire() -> bool:
 	var should_call = self.is_ready()
