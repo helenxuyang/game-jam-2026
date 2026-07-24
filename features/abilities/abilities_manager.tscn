@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://csmuq3w5kedmk"]
+
+[ext_resource type="Script" uid="uid://dqjdoh85eri18" path="res://features/abilities/abilities_manager.gd" id="1_y0dy4"]
+
+[node name="AbilitiesManager" type="Node2D" unique_id=1107737281]
+script = ExtResource("1_y0dy4")

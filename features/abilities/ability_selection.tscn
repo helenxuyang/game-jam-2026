@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://chxhol0mho4sf"]
+
+[ext_resource type="Script" uid="uid://cqt6b1dff88m7" path="res://features/abilities/ability_selection.gd" id="1_rgiqp"]
+
+[node name="AbilitySelection" type="CanvasLayer" unique_id=1765130874]
+script = ExtResource("1_rgiqp")
+
+[node name="CenterContainer" type="MarginContainer" parent="." unique_id=820336627]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1334478128]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1264400514]
+layout_mode = 2
+text = "Select an ability"
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=1297749225]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2

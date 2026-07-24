@@ -2,13 +2,11 @@ class_name Ability
 
 var period: int
 var current_count: float
-var effect_name: String
-var effect: Callable
+var effect: AbilityEffect
 var was_called: bool
 
-func _init(period, effect_name, effect):
+func _init(period, effect):
 	self.period = period
-	self.effect_name = effect_name
 	self.effect = effect
 		
 func is_ready():
@@ -20,6 +18,6 @@ func is_ready():
 func fire() -> bool:
 	var should_call = self.is_ready()
 	if should_call:
-		self.effect.call()
+		self.effect.function.call()
 	self.was_called = should_call
 	return should_call

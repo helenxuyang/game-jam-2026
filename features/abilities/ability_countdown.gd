@@ -12,7 +12,7 @@ static func create(ability: Ability):
 	return instance
 
 func set_name_label(ability: Ability):
-	$Name.text = ability.effect_name
+	$Name.text = ability.effect.name
 	
 func update_ring(ability: Ability):
 	$TextureProgressBar.tint_over = Color.WHITE

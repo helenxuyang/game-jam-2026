@@ -1,34 +1,41 @@
 extends Node
 
+const AbilitySelection = preload("res://features/abilities/ability_selection.tscn")
+const NUM_ABILITIES = 4
+
 var abilities: Array[Ability]
 var audio_players: Array[AudioStreamPlayer]
 
 func _ready() -> void:
-	# temporarily add abilities to start with for testing
-	for i in range(4):
-		var ability = AbilityUtils.get_random_ability()
-		self.abilities.append(ability)
-		prints(ability.effect_name, ability.period)
-	Hud.build_ability_countdowns()
+	self.abilities.append(AbilityUtils.get_base_attack_ability())
 	self.add_ability_countdown_audio_players()
 
+func add_ability(ability: Ability):
+	abilities.append(ability);
+	
+	
+func show_ability_countdowns():
+	Hud.build_ability_countdowns()
+	self.add_ability_countdown_audio_players()
+	
 func handle_fire():
+	var successful = false
 	if !GlobalTimer.is_paused:
 		for i in range(self.abilities.size()):
 			var ability = self.abilities[i]
 			if ability.fire():
 				# make sure audio still plays even if you clicked early
 				var audio_player = self.audio_players[i]
-				if !audio_player.playing:
-					audio_player.play()
-	GlobalTimer.pause()
-
+				audio_player.play()
+				successful = true
+	if !successful:
+		GlobalTimer.pause()
+	
 func add_ability_countdown_audio_players():
-	for i in range(self.abilities.size()):
-		var ability = self.abilities[i]
+	for i in range(NUM_ABILITIES):
 		var audio_player = AudioStreamPlayer.new()
-		var cOctave = i + 2
-		audio_player.stream = load("res://sound/C" + str(cOctave) + ".mp3")
+		var octave = i + 2
+		audio_player.stream = load("res://sound/C" + str(octave) + ".mp3")
 		self.audio_players.append(audio_player)
 		self.add_child(audio_player)
 	GlobalTimer.count_sec.connect(play_audio)

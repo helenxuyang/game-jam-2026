@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dudlx6qq4mney"]
+
+[ext_resource type="Script" uid="uid://celpgg45wdfwc" path="res://features/abilities/ability_card.gd" id="1_6il1l"]
+
+[node name="AbilityCard" type="Control" unique_id=1381714649]
+custom_minimum_size = Vector2(200, 150)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6il1l")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=629378381]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=114434219]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1371410780]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1840908869]
+layout_mode = 2
+
+[node name="PeriodLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=899353323]
+layout_mode = 2
+text = "3"
+
+[node name="NameLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1971740816]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "name"
+horizontal_alignment = 2
+
+[node name="DescriptionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1041347819]
+custom_maximum_size = Vector2(150, -1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+text = "description"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SelectButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=350615850]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 12
+text = "Select"
