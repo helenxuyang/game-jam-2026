@@ -6,7 +6,5 @@
 [node name="Area2D" type="Area2D" unique_id=366303387]
 script = ExtResource("1_gf172")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1805443277]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1805443277]
 texture = ExtResource("2_dl81w")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1389395060]

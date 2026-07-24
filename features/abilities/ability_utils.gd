@@ -1,29 +1,54 @@
-class_name AbilityUtils
+extends  Node
 
 # TODO: integrate with actual function that shoots bullets
-static func fire_projectile(projectile: ProjectileConfig):
-	pass
+
+signal spawn_projectile(damage, direction)
+
+
+func fire_projectile(projectile: ProjectileConfig):
+	await get_tree().create_timer(projectile.delay).timeout
+	spawn_projectile.emit(projectile.damage, projectile.direction)
 	
-static func get_attack_effect(projectiles: Array[ProjectileConfig]):
+func get_attack_effect(projectiles: Array[ProjectileConfig]):
 	for projectile in projectiles:
 		fire_projectile(projectile)
 
-static var effects: Dictionary[String, Callable] = {
+var effects: Dictionary[String, Callable] = {
 	"Triple Bullet": func(): get_attack_effect([
-		ProjectileConfig.new(10, Vector2(2,2), 10, 0),
-		ProjectileConfig.new(10, Vector2(2,2), 10, 0.1),
-		ProjectileConfig.new(10, Vector2(2,2), 10, 0.2),
+		ProjectileConfig.new(10, 1 * Vector2.from_angle(deg_to_rad(0)), 0),
+		ProjectileConfig.new(10, 1 * Vector2.from_angle(deg_to_rad(0)), 0.1),
+		ProjectileConfig.new(10, 1 * Vector2.from_angle(deg_to_rad(0)), 0.2),
 	]),
 	"Radial Attack": func(): get_attack_effect([
-		ProjectileConfig.new(10, Vector2(1,0), 10, 0),
-		ProjectileConfig.new(10, Vector2(0,1), 10, 0),
-		ProjectileConfig.new(10, Vector2(-1,0), 10, 0),
-		ProjectileConfig.new(10, Vector2(0,-1), 10, 0),
+		ProjectileConfig.new(10, 2 * Vector2.from_angle(deg_to_rad(0)), 0),
+		ProjectileConfig.new(10, 2 * Vector2.from_angle(deg_to_rad(90)), 0),
+		ProjectileConfig.new(10, 2 * Vector2.from_angle(deg_to_rad(-90)), 0),
+		ProjectileConfig.new(10, 2 * Vector2.from_angle(deg_to_rad(180)), 0)
 	]),
-	"Damage Boost": func(): pass,
+	"Tri-Shot": func(): get_attack_effect([
+		ProjectileConfig.new(10, .5 * Vector2.from_angle(deg_to_rad(0)), 0),
+		ProjectileConfig.new(10, .5 * Vector2.from_angle(deg_to_rad(30)), 0),
+		ProjectileConfig.new(10, .5 * Vector2.from_angle(deg_to_rad(-30)), 0),
+	]),
+	"shotty": func(): 
+		var spread = 20
+		var speedmin = .2
+		var speedmax = .3
+		get_attack_effect([
+		ProjectileConfig.new(10, randf_range(speedmin, speedmax) * Vector2.from_angle(deg_to_rad(randi_range(-spread, spread))), 0),
+		ProjectileConfig.new(10, randf_range(speedmin, speedmax) * Vector2.from_angle(deg_to_rad(randi_range(-spread, spread))), 0),
+		ProjectileConfig.new(10, randf_range(speedmin, speedmax) * Vector2.from_angle(deg_to_rad(randi_range(-spread, spread))), 0),
+		ProjectileConfig.new(10, randf_range(speedmin, speedmax) * Vector2.from_angle(deg_to_rad(randi_range(-spread, spread))), 0),
+		ProjectileConfig.new(10, randf_range(speedmin, speedmax) * Vector2.from_angle(deg_to_rad(randi_range(-spread, spread))), 0),
+		ProjectileConfig.new(10, randf_range(speedmin, speedmax) * Vector2.from_angle(deg_to_rad(randi_range(-spread, spread))), 0),
+		ProjectileConfig.new(10, randf_range(speedmin, speedmax) * Vector2.from_angle(deg_to_rad(randi_range(-spread, spread))), 0),
+		ProjectileConfig.new(10, randf_range(speedmin, speedmax) * Vector2.from_angle(deg_to_rad(randi_range(-spread, spread))), 0),
+		ProjectileConfig.new(10, randf_range(speedmin, speedmax) * Vector2.from_angle(deg_to_rad(randi_range(-spread, spread))), 0),
+	]),
+	#"Damage Boost": func(): pass,
 }
 
-static func get_random_ability():
+func get_random_ability():
 	var random = RandomNumberGenerator.new()
 	var frequency: int = randi_range(2, 8);
 	var effect_name = effects.keys().pick_random()
