@@ -2,7 +2,7 @@ extends Node
 
 const frequency = 0.05 
 
-var global_time: float = 1
+var global_time: float = 0
 var global_timer: Timer
 var whole_sec_counter: int = 0
 
@@ -35,4 +35,4 @@ func is_on_beat() -> bool:
 	return abs(rounded_time - closest_beat) <= valid_range
 
 func reset_time():
-	self.global_time = 1
+	self.global_time = 0
