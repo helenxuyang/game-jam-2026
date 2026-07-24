@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjx8kerucqluf" path="res://features/abilities/ability_countdown.gd" id="1_mq0nk"]
 [ext_resource type="Texture2D" uid="uid://clgdux68qonvi" path="res://ui/assets/progress_ring.svg" id="2_xfnqh"]
+[ext_resource type="Texture2D" uid="uid://bv350afjt0kai" path="res://ui/assets/progress_over.svg" id="3_xfnqh"]
 
 [node name="AbilityCountdown" type="Control" unique_id=356765739]
 layout_mode = 3
@@ -32,6 +33,7 @@ scale = Vector2(0.7, 0.7)
 value = 33.0
 fill_mode = 4
 texture_under = ExtResource("2_xfnqh")
+texture_over = ExtResource("3_xfnqh")
 texture_progress = ExtResource("2_xfnqh")
 tint_progress = Color(0, 0.5284455, 0.25810957, 1)
 

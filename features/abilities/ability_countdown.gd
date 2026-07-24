@@ -24,9 +24,7 @@ func update_label():
 	$Label.text = str(self.ability.frequency)
 
 func highlight():
-	$Name.add_theme_color_override("font_color", Color.BLUE)
-	$Label.add_theme_color_override("font_color", Color.BLUE)
+	$TextureProgressBar.tint_over = Color.LAWN_GREEN
 	for i in range(10):
 		await get_tree().process_frame
-	$Name.add_theme_color_override("font_color", Color.WHITE)
-	$Label.add_theme_color_override("font_color", Color.WHITE)
+	$TextureProgressBar.tint_over = Color.WHITE
