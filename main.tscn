@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bdyigy4fvbvtr"]
 
 [ext_resource type="Script" uid="uid://iaadxyt5y0r2" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://p5lt5s34hlnf" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="AudioStream" uid="uid://bcqya3k2jubd4" path="res://sound/freesound_community-metronome-85688.mp3" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://kfgcif15hu1i" path="res://global_counter.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://in1fy4tx5lld" path="res://hud.gd" id="5_lquwl"]
@@ -11,8 +10,6 @@ script = ExtResource("1_ig7tw")
 
 [node name="Timer" type="Timer" parent="." unique_id=493580224]
 autostart = true
-
-[node name="Player" parent="." unique_id=366303387 instance=ExtResource("2_0xm2m")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=259382215]
 stream = ExtResource("3_h2yge")

@@ -7,7 +7,8 @@ const Bullet = preload("res://bullet.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size # Replace with function body.
-
+	AbilityUtils.spawn_projectile.connect(_on_spawn_projectile)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -22,14 +23,22 @@ func _process(delta: float) -> void:
 		velocity.y -= 1
 		#rotation_degrees -= 1
 	if Input.is_action_just_pressed("fire"):
-		var bullet =  Bullet.instantiate()
-		get_parent().add_child(bullet)
-		bullet.global_position = global_position
-		bullet.global_rotation = global_rotation
+		
+		#var bullet =  Bullet.instantiate()
+		#get_parent().add_child(bullet)
+		#bullet.global_position = global_position
+		#bullet.global_rotation = global_rotation
+		AbilityUtils.get_random_ability().effect.call()
+		print("among us")
 		#get_parent().get_node("AudioStreamPlayer").play()
-
-
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	look_at(get_global_mouse_position())
+	
+func _on_spawn_projectile(damage, direction) -> void:
+	var bullet =  Bullet.instantiate()
+	get_parent().add_child(bullet)
+	bullet.global_position = global_position
+	bullet.global_rotation = global_rotation + direction.angle()
+	bullet.speed = bullet.speed * direction.length()
