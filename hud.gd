@@ -18,26 +18,18 @@ func _ready() -> void:
 	add_child(self.total_label)
 
 	update_ability_ring_displays()
-	update_ability_label_displays()
-	update_total_label_display()
 		
-func update_total_label_display():
-	self.total_label.text = str(int(roundf(GlobalCounter.global_time)))
-	
 func update_ability_ring_displays():
 	for ability_countdown in self.ability_countdowns:
-		ability_countdown.update_ring()
-	
-func update_ability_label_displays():
-	for ability_countdown in self.ability_countdowns:
-		ability_countdown.update_label()
-	
-func handle_fire_abilities():
-	for ability_countdown in self.ability_countdowns:
-		var did_effect_fire = ability_countdown.ability.fire()
-		if did_effect_fire:
+		if GlobalCounter.is_paused:
 			ability_countdown.highlight()
-			
-	GlobalCounter.reset_time()
-	Hud.update_ability_label_displays()
-	Hud.update_total_label_display()
+		else:
+			ability_countdown.update_ring()
+
+func handle_fire():
+	#var is_on_time = GlobalCounter.global_ms % 1000 <= GlobalCounter.valid_window
+	#prints("on time", is_on_time)
+	if !GlobalCounter.is_paused:
+		for ability_countdown in self.ability_countdowns:
+			ability_countdown.ability.fire()
+	GlobalCounter.pause()

@@ -24,15 +24,7 @@ func _process(delta: float) -> void:
 		velocity.y -= 1
 		#rotation_degrees -= 1
 	if Input.is_action_just_pressed("fire"):
-		
-		#var bullet =  Bullet.instantiate()
-		#get_parent().add_child(bullet)
-		#bullet.global_position = global_position
-		#bullet.global_rotation = global_rotation
-		#AbilityUtils.get_random_ability().effect.call()
-		#get_parent().get_node("AudioStreamPlayer").play()
-		
-		Hud.handle_fire_abilities()
+		Hud.handle_fire()
 		
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
