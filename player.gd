@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		#AbilityUtils.get_random_ability().effect.call()
 		#get_parent().get_node("AudioStreamPlayer").play()
 		
-		Loadout.fire_abilities()
+		Hud.handle_fire_abilities()
 		
 	velocity = velocity.normalized() * speed
 	position += velocity * delta

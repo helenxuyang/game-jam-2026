@@ -17,16 +17,27 @@ func _ready() -> void:
 	self.total_label.set_position(Vector2(0, 100))
 	add_child(self.total_label)
 
-	update_display()
+	update_ability_ring_displays()
+	update_ability_label_displays()
+	update_total_label_display()
 		
 func update_total_label_display():
 	self.total_label.text = str(int(roundf(GlobalCounter.global_time)))
 	
-func update_ability_countdown_displays():
+func update_ability_ring_displays():
 	for ability_countdown in self.ability_countdowns:
-		ability_countdown.update_display()
+		ability_countdown.update_ring()
 	
-func update_display():
-	self.update_total_label_display()
-	self.update_ability_countdown_displays()
+func update_ability_label_displays():
+	for ability_countdown in self.ability_countdowns:
+		ability_countdown.update_label()
 	
+func handle_fire_abilities():
+	for ability_countdown in self.ability_countdowns:
+		var did_effect_fire = ability_countdown.ability.fire()
+		if did_effect_fire:
+			ability_countdown.highlight()
+			
+	GlobalCounter.reset_time()
+	Hud.update_ability_label_displays()
+	Hud.update_total_label_display()

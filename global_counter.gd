@@ -2,7 +2,7 @@ extends Node
 
 const frequency = 0.05 
 
-var global_time: float = 0.0
+var global_time: float = 1
 var global_timer: Timer
 var whole_sec_counter: int = 0
 
@@ -16,11 +16,17 @@ func _ready():
 	
 func _on_timeout():
 	self.global_time += frequency
+	Loadout.increment_abilities()
+	Hud.update_ability_ring_displays()
+	
 	self.whole_sec_counter += 1
 	var is_whole_second = self.whole_sec_counter == 1/frequency 
 	if is_whole_second:
 		count_sec.emit()
 		self.whole_sec_counter = 0
+		Hud.update_ability_label_displays()
+		Hud.update_total_label_display()
+
 
 func is_on_beat() -> bool:
 	var valid_range = 0.1 # 100ms
@@ -29,4 +35,4 @@ func is_on_beat() -> bool:
 	return abs(rounded_time - closest_beat) <= valid_range
 
 func reset_time():
-	self.global_time = 0
+	self.global_time = 1
