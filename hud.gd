@@ -1,7 +1,6 @@
 extends CanvasLayer
 
-func noop(): 
-	pass
+var total_label: Label
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,7 +9,11 @@ func _ready() -> void:
 		var ability_countdown = AbilityCountdown.create(ability)
 		ability_countdown.set_position(Vector2(100 + 80 * i, 100))
 		add_child(ability_countdown)
+		
+		self.total_label = Label.new()
+		GlobalCounter.count_sec.connect(self.update_total_label)
+		self.total_label.set_position(Vector2(0, 100))
+		add_child(self.total_label)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func update_total_label():
+	self.total_label.text = str(roundf(GlobalCounter.global_time))

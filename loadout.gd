@@ -7,3 +7,4 @@ func _ready():
 	for i in range(4):
 		var ability = AbilityUtils.get_random_ability()
 		self.abilities.append(ability)
+		prints(ability.effect_name, ability.frequency)

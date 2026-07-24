@@ -26,6 +26,7 @@ func on_fire():
 func update_count_display():
 	var percent = float(self.ability.current_count) / float(self.ability.frequency) * 100
 	set_value(percent)
+	$Label.text = str(self.ability.current_count) + "/" + str(self.ability.frequency)
 	
 func set_value(value):
 	$TextureProgressBar.value = value

@@ -29,8 +29,7 @@ func _process(delta: float) -> void:
 		#get_parent().add_child(bullet)
 		#bullet.global_position = global_position
 		#bullet.global_rotation = global_rotation
-		AbilityUtils.get_random_ability().effect.call()
-		print("among us")
+		#AbilityUtils.get_random_ability().effect.call()
 		#get_parent().get_node("AudioStreamPlayer").play()
 		fire.emit()
 		
