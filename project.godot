@@ -16,8 +16,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-player="*uid://cigtax5pqflj7"
 GlobalCounter="*uid://k3tmrw311wl0"
+player="*uid://cigtax5pqflj7"
 
 [display]
 
