@@ -18,9 +18,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalCounter="*uid://k3tmrw311wl0"
-Loadout="*uid://dqjdoh85eri18"
-AbilityUtils="*uid://cx4nnd0dq81yk"
 player="*uid://p5lt5s34hlnf"
+AbilityUtils="*uid://cx4nnd0dq81yk"
+Loadout="*uid://dqjdoh85eri18"
+Hud="*uid://in1fy4tx5lld"
 
 [display]
 

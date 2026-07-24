@@ -21,13 +21,12 @@ func _on_timeout():
 	if is_whole_second:
 		count_sec.emit()
 		self.whole_sec_counter = 0
-		
+
 func is_on_beat() -> bool:
 	var valid_range = 0.1 # 100ms
 	var closest_beat: int = roundf(self.global_time)
 	var rounded_time = snapped(self.global_time, 0.01) # round to 2 decimals to avoid floating point issues
 	return abs(rounded_time - closest_beat) <= valid_range
 
-func restart():
+func reset_time():
 	self.global_time = 0
-	self.global_timer.start()

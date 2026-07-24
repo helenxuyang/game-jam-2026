@@ -31,7 +31,8 @@ func _process(delta: float) -> void:
 		#bullet.global_rotation = global_rotation
 		#AbilityUtils.get_random_ability().effect.call()
 		#get_parent().get_node("AudioStreamPlayer").play()
-		fire.emit()
+		
+		Loadout.fire_abilities()
 		
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
