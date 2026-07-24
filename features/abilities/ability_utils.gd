@@ -50,7 +50,7 @@ var effects: Dictionary[String, Callable] = {
 
 func get_random_ability():
 	var random = RandomNumberGenerator.new()
-	var frequencies = [1, 2, 4, 8];
+	var frequencies = [5, 2, 3, 7];
 	var frequency: int = frequencies.pick_random()
 	var effect_name = effects.keys().pick_random()
 	var effect = effects.get(effect_name)

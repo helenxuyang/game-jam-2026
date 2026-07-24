@@ -1,10 +1,26 @@
 [gd_scene format=3 uid="uid://bdyigy4fvbvtr"]
 
 [ext_resource type="Script" uid="uid://iaadxyt5y0r2" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="AudioStream" uid="uid://bcqya3k2jubd4" path="res://sound/freesound_community-metronome-85688.mp3" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://blxreju16cru4" path="res://sound/freesound_community-metronome-85688.mp3" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://d2l5v30mprulp" path="res://sound/C2.mp3" id="5_5vw27"]
+[ext_resource type="AudioStream" uid="uid://dkhbdmydjqnub" path="res://sound/C3.mp3" id="6_kek77"]
+[ext_resource type="AudioStream" uid="uid://bjwnfwi8p8hif" path="res://sound/C4.mp3" id="7_4c57u"]
+[ext_resource type="AudioStream" uid="uid://br1i387bc2hag" path="res://sound/C5.mp3" id="8_efxa6"]
 
 [node name="Main" type="Node" unique_id=2053652697]
 script = ExtResource("1_ig7tw")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=259382215]
 stream = ExtResource("3_h2yge")
+
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="." unique_id=1027564376]
+stream = ExtResource("5_5vw27")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1196840195]
+stream = ExtResource("6_kek77")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1811118675]
+stream = ExtResource("7_4c57u")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="." unique_id=1995101539]
+stream = ExtResource("8_efxa6")
