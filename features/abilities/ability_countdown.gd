@@ -27,6 +27,6 @@ func update_label(ability: Ability):
 
 func highlight(successful: bool):
 	$TextureProgressBar.tint_over = Color.LAWN_GREEN if successful else Color.RED
-	for i in range(10):
+	for i in range(40):
 		await get_tree().process_frame
 	$TextureProgressBar.tint_over = Color.WHITE
