@@ -3,9 +3,26 @@
 [ext_resource type="Script" uid="uid://dgr2lr5jgkjir" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://d257ffddlidy4" path="res://icon.svg" id="1_7k104"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gyqm"]
+bg_color = Color(0.96167976, 0, 0.004900288, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
+size = Vector2(130, 84)
+
 [node name="Area2D" type="Area2D" unique_id=1640303650]
 script = ExtResource("1_4gyqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=903899431]
 skew = 0.8255407
 texture = ExtResource("1_7k104")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1983372850]
+offset_left = -68.0
+offset_top = -84.0
+offset_right = 82.0
+offset_bottom = -57.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_4gyqm")
+max_value = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=722592499]
+shape = SubResource("RectangleShape2D_qi2p4")

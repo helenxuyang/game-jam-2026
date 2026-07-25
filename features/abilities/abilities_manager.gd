@@ -27,7 +27,7 @@ func play_audio_cue(ability: Ability, ability_index: int):
 	elif diff >= 240 && diff <= 260:
 		audio_player.pitch_scale = 0.80
 		audio_player.finished.connect(func(): audio_player.pitch_scale = 1)
-		audio_player.play()
+		# audio_player.play()
 	
 func update_ability_countdowns():
 	for i in self.abilities.size():
@@ -68,4 +68,5 @@ func play_audio():
 		var ability = self.abilities[i]
 		var audio_player = self.audio_players[i]
 		if (sec == 0 || sec % ability.period == 0):
-			audio_player.play();
+			# audio_player.play();
+			pass

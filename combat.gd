@@ -6,7 +6,7 @@ const enemy = preload("res://enemy.tscn")
 func _ready() -> void:
 	var Enemy =  enemy.instantiate()
 	add_child(Enemy)
-	Enemy.position = Vector2(10000, -1000)
+	Enemy.position = Vector2(1000, 500)
 	Hud.build_ability_countdowns()
 	GlobalTimer.timer.start()
 	GlobalTimer.seconds_timer.start()

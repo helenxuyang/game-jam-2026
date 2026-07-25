@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://d257ffddlidy4" path="res://icon.svg" id="1_v7oki"]
 [ext_resource type="Script" uid="uid://ha818u3gr5aj" path="res://bullet.gd" id="1_v8qja"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7rq3"]
+size = Vector2(80, 24)
+
 [node name="Area2D" type="Area2D" unique_id=2024135956]
 script = ExtResource("1_v8qja")
 
@@ -11,5 +14,9 @@ position = Vector2(2.9999962, -1)
 scale = Vector2(0.6328125, 0.18750001)
 texture = ExtResource("1_v7oki")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=922007251]
+position = Vector2(3, -1)
+shape = SubResource("RectangleShape2D_d7rq3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="hit" from="." to="." method="_on_hit"]

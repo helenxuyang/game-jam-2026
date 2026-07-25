@@ -53,7 +53,7 @@ func pause():
 		# pretend the previous second was 0
 		self.global_ms = self.global_ms % 1000
 		# keep seconds timer in sync
-		self.seconds_timer.start()
+		# self.seconds_timer.start()
 
 func unpause():
 	self.is_paused = false

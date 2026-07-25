@@ -1,6 +1,8 @@
 extends Area2D
 var speed = 20;
 var speed_scale = 1;
+var damage = 1;
+
 signal hit
 
 func _init():
@@ -19,5 +21,14 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	hit.emit()
 	set_deferred("disabled", true)
+	if(body is Enemy):
+		(body as Enemy).health -= damage
+
+
+func _on_area_entered(area: Area2D) -> void:
+	set_deferred("disabled", true)
+	if(area is Enemy):
+		var impacted_enemy:Enemy = area
+		impacted_enemy.health -= damage
+		hide()

@@ -37,3 +37,4 @@ func _on_spawn_projectile(damage, direction) -> void:
 	bullet.global_position = global_position
 	bullet.global_rotation = global_rotation + direction.angle()
 	bullet.speed = bullet.speed * direction.length()
+	bullet.damage = damage
