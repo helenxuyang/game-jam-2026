@@ -19,4 +19,10 @@ func _process(delta: float) -> void:
 		position += (player.position - position).normalized()*follow_speed
 	
 	health_bar.value = health/max_health
+	if self.health <= 0:
+		self.queue_free()
 	pass
+
+#static func create_fast_enemy():
+	
+	
