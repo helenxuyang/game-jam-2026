@@ -23,8 +23,10 @@ func play_audio_cue(ability: Ability, ability_index: int):
 	var closest_multiple = snappedi(GlobalTimer.global_ms, period_ms)
 	var diff = closest_multiple - GlobalTimer.global_ms
 	if diff > 0 && diff <= 20:
-		audio_player.pitch_scale = 1
-		audio_player.play();
+		if !ability.was_called:
+			audio_player.pitch_scale = 1
+			audio_player.play();
+		ability.was_called = false
 	# quarter note pickup
 	elif diff >= 240 && diff <= 260:
 		audio_player.pitch_scale = 0.80

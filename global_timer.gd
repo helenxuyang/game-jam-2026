@@ -1,13 +1,12 @@
 extends Node
 
 const period = 0.02
-const valid_window = 100
+const valid_window = 200
 
 var global_ms: int = 0
 var timer: Timer
 
-var num_seconds: int = 0
-var seconds_timer: Timer
+var metronome_timer: Timer
 
 var is_paused: bool = false
 var pause_time
@@ -20,12 +19,12 @@ func _ready():
 	self.timer.timeout.connect(_on_timeout)
 	add_child(self.timer)
 	
-	self.seconds_timer = Timer.new()
-	self.seconds_timer.wait_time = 1
-	self.seconds_timer.timeout.connect(_on_seconds_timeout)
-	add_child(self.seconds_timer)
+	self.metronome_timer = Timer.new()
+	self.metronome_timer.wait_time = 0.5
+	self.metronome_timer.timeout.connect(_on_seconds_timeout)
+	add_child(self.metronome_timer)
 
-func _on_timeout():	
+func _on_timeout():
 	AbilitiesManager.update_ability_countdowns()
 	if !GlobalTimer.is_paused:
 		self.global_ms += int(period * 1000)
@@ -59,9 +58,6 @@ func unpause():
 		
 func _on_seconds_timeout():
 	count_sec.emit()
-	num_seconds += 1
 	if is_paused:
 		self.unpause()
 		self.global_ms = 0
-		
-	

@@ -8,8 +8,8 @@ var enemies: Array[Enemy] = []
 func _ready() -> void:
 	self.setup_enemies(3)
 	GlobalTimer.timer.start()
-	GlobalTimer.seconds_timer.start()
-	GlobalTimer.count_sec.connect(func (): $MetronomeAudioStreamPlayer.play(0.04))
+	GlobalTimer.metronome_timer.start()
+	GlobalTimer.count_sec.connect(func(): $MetronomeAudioStreamPlayer.play(0.04))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,7 +20,6 @@ func _process(delta: float) -> void:
 	
 
 func get_random_enemy_position() -> Vector2:
-	var player_position = player.position
 	var radius = 50
 	var random_x_half = randi() % 2
 	var random_y_half = randi() % 2
