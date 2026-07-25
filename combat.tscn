@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnsohte1ii00v"]
 
 [ext_resource type="Script" uid="uid://jurb83o2hd4v" path="res://combat.gd" id="1_raif2"]
-[ext_resource type="AudioStream" uid="uid://blxreju16cru4" path="res://sound/tick.mp3" id="2_s0t75"]
+[ext_resource type="AudioStream" uid="uid://cdmc6vqhpb2wt" path="res://sound/kick.mp3" id="2_s0t75"]
 
 [node name="Combat" type="Node2D" unique_id=990932194]
 script = ExtResource("1_raif2")
