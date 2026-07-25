@@ -2,12 +2,17 @@
 
 [ext_resource type="Script" uid="uid://celpgg45wdfwc" path="res://features/abilities/ability_card.gd" id="1_6il1l"]
 
-[node name="AbilityCard" type="Control" unique_id=1381714649]
+[node name="AbilityCard" type="Control" unique_id=1381714649 node_paths=PackedStringArray("name_label", "description_label", "period_label", "select_button", "delete_button")]
 custom_minimum_size = Vector2(200, 150)
 custom_maximum_size = Vector2(200, -1)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_6il1l")
+name_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NameLabel")
+description_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/DescriptionLabel")
+period_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PeriodLabel")
+select_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/SelectButton")
+delete_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/DeleteButton")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=629378381]
 layout_mode = 0
@@ -47,8 +52,17 @@ text = "description"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="SelectButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=350615850]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=669462423]
 layout_mode = 2
+
+[node name="SelectButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=350615850]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 12
 text = "Select"
+
+[node name="DeleteButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=174185053]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Delete"

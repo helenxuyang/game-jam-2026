@@ -1,7 +1,7 @@
 extends Node
 
 const AbilitySelection = preload("res://features/abilities/ability_selection.tscn")
-const NUM_ABILITIES = 4
+const MAX_NUM_ABILITIES = 4
 
 var abilities: Array[Ability]
 var audio_players: Array[AudioStreamPlayer]
@@ -54,7 +54,7 @@ func handle_fire():
 	
 	
 func add_ability_countdown_audio_players():
-	for i in range(NUM_ABILITIES):
+	for i in range(MAX_NUM_ABILITIES):
 		var audio_player = AudioStreamPlayer.new()
 		var octave = i + 2
 		audio_player.stream = load("res://sound/C" + str(octave) + ".mp3")

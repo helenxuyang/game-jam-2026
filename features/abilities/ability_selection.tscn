@@ -2,26 +2,54 @@
 
 [ext_resource type="Script" uid="uid://cqt6b1dff88m7" path="res://features/abilities/ability_selection.gd" id="1_rgiqp"]
 
-[node name="AbilitySelection" type="CanvasLayer" unique_id=1765130874]
+[node name="AbilitySelection" type="CanvasLayer" unique_id=1765130874 node_paths=PackedStringArray("option_card_row", "loadout_card_row")]
 script = ExtResource("1_rgiqp")
+option_card_row = NodePath("PanelContainer/MarginContainer/VBoxContainer/OptionsContainer/OptionCardRow")
+loadout_card_row = NodePath("PanelContainer/MarginContainer/VBoxContainer/LoadoutContainer/LoadoutCardRow")
 
-[node name="CenterContainer" type="MarginContainer" parent="." unique_id=820336627]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=227420404]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=751570757]
+layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1334478128]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=845884661]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1264400514]
+[node name="OptionsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1334478128]
 layout_mode = 2
-text = "Select an ability"
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=1297749225]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/OptionsContainer" unique_id=353085823]
 layout_mode = 2
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 8
-columns = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="SelectAbilityHeader" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/OptionsContainer/MarginContainer" unique_id=1264400514]
+layout_mode = 2
+text = "Select an ability:"
+
+[node name="OptionCardRow" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/OptionsContainer" unique_id=1099059722]
+layout_mode = 2
+
+[node name="LoadoutContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1949612457]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/LoadoutContainer" unique_id=1819821567]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="CurrentLoadoutHeader" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/LoadoutContainer/MarginContainer" unique_id=1849228972]
+layout_mode = 2
+text = "Loadout:"
+
+[node name="LoadoutCardRow" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/LoadoutContainer" unique_id=1564207640]
+layout_mode = 2
