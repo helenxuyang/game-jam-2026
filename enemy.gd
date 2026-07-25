@@ -21,8 +21,25 @@ func _process(delta: float) -> void:
 	health_bar.value = health/max_health
 	if self.health <= 0:
 		self.queue_free()
-	pass
-
-#static func create_fast_enemy():
 	
+static func create_fast_enemy() -> Enemy:
+	var scene = load("res://enemy.tscn")
+	var instance: Enemy = scene.instantiate()
+	instance.scale = Vector2(0.5, 0.5)
+	instance.follow_speed = 3
+	instance.max_health = 10
+	return instance
+
+static func create_slow_enemy() -> Enemy:
+	var scene = load("res://enemy.tscn")
+	var instance: Enemy = scene.instantiate()
+	instance.scale = Vector2(1.5, 1.5)
+	instance.follow_speed = 0.5
+	instance.max_health = 100
+	return instance
+
+static var enemy_creators: Array[Callable] = [
+	create_fast_enemy,
+	create_slow_enemy
+]
 	

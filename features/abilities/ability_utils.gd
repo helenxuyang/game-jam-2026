@@ -74,7 +74,6 @@ func get_base_attack_ability():
 	)
 	
 func get_random_ability():
-	var random = RandomNumberGenerator.new()
 	var periods = range(2,8);
 	var period: int = periods.pick_random()
 	var effect = effects.pick_random()

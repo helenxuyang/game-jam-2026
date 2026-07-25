@@ -9,9 +9,11 @@ var audio_players: Array[AudioStreamPlayer]
 func _ready() -> void:
 	self.abilities.append(AbilityUtils.get_base_attack_ability())
 	self.add_ability_countdown_audio_players()
+	Hud.build_ability_countdowns()
 	
 func add_ability(ability: Ability):
-	abilities.append(ability);	
+	abilities.append(ability)
+	Hud.build_ability_countdowns()
 
 func play_audio_cue(ability: Ability, ability_index: int):
 	var countdown = Hud.ability_countdowns[ability_index]
