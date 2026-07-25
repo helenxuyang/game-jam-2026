@@ -11,19 +11,11 @@ func build_ability_countdowns():
 		countdown.set_position(Vector2(100 + 80 * i, 100))
 		self.ability_countdowns.append(countdown)
 		self.add_child(countdown)
-	self.update_ability_ring_displays()
+	AbilitiesManager.update_ability_countdowns()
 
 func clear_children():
 	var children = self.get_children()
 	for child in children:
 		child.free()
-
-func update_ability_ring_displays():
-	for i in AbilitiesManager.abilities.size():
-		var ability = AbilitiesManager.abilities[i]
-		var countdown = ability_countdowns[i]
-		if GlobalTimer.is_paused:
-			countdown.highlight(ability)
-		else:
-			countdown.update_ring(ability)
+			
 	

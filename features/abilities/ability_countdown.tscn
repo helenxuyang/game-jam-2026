@@ -35,7 +35,7 @@ fill_mode = 4
 texture_under = ExtResource("2_xfnqh")
 texture_over = ExtResource("3_xfnqh")
 texture_progress = ExtResource("2_xfnqh")
-tint_progress = Color(0, 0.5284455, 0.25810957, 1)
+tint_progress = Color(0.19176841, 0.5225499, 0.96221477, 1)
 
 [node name="Label" type="Label" parent="." unique_id=680545052]
 layout_mode = 0

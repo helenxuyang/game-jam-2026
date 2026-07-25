@@ -9,27 +9,49 @@ var audio_players: Array[AudioStreamPlayer]
 func _ready() -> void:
 	self.abilities.append(AbilityUtils.get_base_attack_ability())
 	self.add_ability_countdown_audio_players()
-
+	
 func add_ability(ability: Ability):
-	abilities.append(ability);
+	abilities.append(ability);	
+
+func play_audio_cue(ability: Ability, ability_index: int):
+	var countdown = Hud.ability_countdowns[ability_index]
+	var audio_player = self.audio_players[ability_index]
 	
+	var period_ms = ability.period * 1000
+	var closest_multiple = snappedi(GlobalTimer.global_ms, period_ms)
+	var diff = closest_multiple - GlobalTimer.global_ms
+	if diff > 0 && diff <= 20:
+		audio_player.pitch_scale = 1
+		audio_player.play();
+	# quarter note pickup
+	elif diff >= 240 && diff <= 260:
+		audio_player.pitch_scale = 0.80
+		audio_player.finished.connect(func(): audio_player.pitch_scale = 1)
+		audio_player.play()
 	
-func show_ability_countdowns():
-	Hud.build_ability_countdowns()
-	self.add_ability_countdown_audio_players()
-	
+func update_ability_countdowns():
+	for i in self.abilities.size():
+		var ability = self.abilities[i]
+		var countdown = Hud.ability_countdowns[i]
+		if !GlobalTimer.is_paused:
+			countdown.update_ring(ability)
+			self.play_audio_cue(ability, i)
+			
+			
 func handle_fire():
-	var successful = false
 	if !GlobalTimer.is_paused:
 		for i in range(self.abilities.size()):
 			var ability = self.abilities[i]
-			if ability.fire():
-				# make sure audio still plays even if you clicked early
+			var countdown = Hud.ability_countdowns[i]
+			var successful = ability.fire()
+			countdown.highlight(successful)
+			if successful:
+				$FireSoundPlayer.play()
 				var audio_player = self.audio_players[i]
-				audio_player.play()
-				successful = true
-	if !successful:
-		GlobalTimer.pause()
+				audio_player.pitch_scale = 1
+				audio_player.play();
+	GlobalTimer.pause()
+	
 	
 func add_ability_countdown_audio_players():
 	for i in range(NUM_ABILITIES):
@@ -45,5 +67,5 @@ func play_audio():
 	for i in range(self.abilities.size()):
 		var ability = self.abilities[i]
 		var audio_player = self.audio_players[i]
-		if (sec % ability.period == 0):
+		if (sec == 0 || sec % ability.period == 0):
 			audio_player.play();

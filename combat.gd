@@ -7,8 +7,10 @@ func _ready() -> void:
 	var Enemy =  enemy.instantiate()
 	add_child(Enemy)
 	Enemy.position = Vector2(10000, -1000)
+	Hud.build_ability_countdowns()
 	GlobalTimer.timer.start()
-	AbilitiesManager.show_ability_countdowns()
+	GlobalTimer.seconds_timer.start()
+	GlobalTimer.count_sec.connect(func (): $MetronomeAudioStreamPlayer.play(0.04))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

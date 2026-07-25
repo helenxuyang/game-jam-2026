@@ -3,7 +3,7 @@ class_name Ability
 var period: int
 var current_count: float
 var effect: AbilityEffect
-var was_called: bool
+var was_called
 
 func _init(period, effect):
 	self.period = period
@@ -19,5 +19,7 @@ func fire() -> bool:
 	var should_call = self.is_ready()
 	if should_call:
 		self.effect.function.call()
-	self.was_called = should_call
+		self.was_called = true
+	else:
+		self.was_called = false
 	return should_call

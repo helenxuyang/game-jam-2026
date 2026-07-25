@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bdyigy4fvbvtr"]
 
 [ext_resource type="Script" uid="uid://iaadxyt5y0r2" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="AudioStream" uid="uid://blxreju16cru4" path="res://sound/freesound_community-metronome-85688.mp3" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://blxreju16cru4" path="res://sound/tick.mp3" id="3_h2yge"]
 
 [node name="Main" type="Node" unique_id=2053652697]
 script = ExtResource("1_ig7tw")
