@@ -20,10 +20,10 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_body_entered(body: Node2D) -> void:
-	set_deferred("disabled", true)
-	if(body is Enemy):
-		(body as Enemy).health -= damage
+#func _on_body_entered(body: Node2D) -> void:
+	#set_deferred("disabled", true)
+	#if(body is Enemy):
+		#(body as Enemy).health -= damage
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -31,4 +31,5 @@ func _on_area_entered(area: Area2D) -> void:
 	if(area is Enemy):
 		var impacted_enemy:Enemy = area
 		impacted_enemy.health -= damage
-		hide()
+		self.queue_free()
+		
